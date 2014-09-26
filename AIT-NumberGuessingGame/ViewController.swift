@@ -14,12 +14,15 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var numberSlider: UISlider!
 
+    @IBOutlet weak var sliderNumberView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         gradientInit()
         
     }
+    
+    var currentValue: Float = 50
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,9 +30,9 @@ class ViewController: UIViewController {
     }
     
     func gradientInit() {
-        let darkBlue: CGColorRef = UIColor(red: 29.0/255.0, green: 119.0/255.0, blue: 239.0/255.0, alpha: 1).CGColor
+        let darkBlue: CGColorRef = UIColor(red: 66.0/255.0, green: 113.0/255.0, blue: 242.0/255.0, alpha: 1).CGColor
         
-        let lightBlue: CGColorRef = UIColor(red: 129.0/255.0, green: 243.0/255.0, blue: 253.0/255.0, alpha: 1).CGColor
+        let lightBlue: CGColorRef = UIColor(red: 129.0/255.0, green: 242.0/255.0, blue: 253.0/255.0, alpha: 1).CGColor
         
         let arrayColors: NSArray = [lightBlue, darkBlue]
         
@@ -42,10 +45,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberSliderAction(sender: AnyObject) {
-        var value = floor(numberSlider.value * 100)
-        println(value)
+        currentValue = floor(numberSlider.value * 100)
+        var valueString = NSString(format: "%.0f", currentValue)
+        sliderNumberView.text = valueString
     }
 
+    @IBAction func guessButtonAction(sender: AnyObject) {
+        
+    }
 
 }
 
