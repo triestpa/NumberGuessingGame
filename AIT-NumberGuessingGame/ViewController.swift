@@ -16,13 +16,17 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var sliderNumberView: UILabel!
     
+    @IBOutlet weak var feedbackText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        sliderNumberView.text = "5"
         gradientInit()
         
     }
     
-    var currentValue: Float = 50
+    var targetValue: Float = 2
+    var currentValue: Float = 5
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,13 +49,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberSliderAction(sender: AnyObject) {
-        currentValue = floor(numberSlider.value * 100)
+        currentValue = floor(numberSlider.value * 10)
         var valueString = NSString(format: "%.0f", currentValue)
         sliderNumberView.text = valueString
     }
 
     @IBAction func guessButtonAction(sender: AnyObject) {
-        
+        if (currentValue < targetValue){
+            feedbackText.text = "Go Higher"
+        }
+        else if (currentValue > targetValue) {
+            feedbackText.text = "Go Lower"
+        }
+        else {
+            feedbackText.text = "You Win!"
+        }
     }
 
 }

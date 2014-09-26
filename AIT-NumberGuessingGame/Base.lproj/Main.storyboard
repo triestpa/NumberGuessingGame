@@ -40,11 +40,18 @@
                                     <action selector="guessButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6IN-tm-IsJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make A Guess!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVe-8q-HrL">
+                                <rect key="frame" x="95" y="76" width="184" height="115"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundView" destination="kh9-bI-dsS" id="VOr-Ng-bfR"/>
+                        <outlet property="feedbackText" destination="fVe-8q-HrL" id="Rhg-e6-Cjx"/>
                         <outlet property="numberSlider" destination="uxS-XB-RgD" id="Rb0-Sz-IdI"/>
                         <outlet property="sliderNumberView" destination="DML-iC-lOC" id="BMM-M8-c8J"/>
                     </connections>
