@@ -25,8 +25,8 @@ class ViewController: UIViewController {
         
     }
     
-    var targetValue: Float = 2
-    var currentValue: Float = 5
+    var targetValue: Int = Int(arc4random_uniform(11))
+    var currentValue: Int = 5
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,8 +49,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberSliderAction(sender: AnyObject) {
-        currentValue = floor(numberSlider.value * 10)
-        var valueString = NSString(format: "%.0f", currentValue)
+        currentValue = Int(floor(numberSlider.value * 10))
+        var valueString = NSString(format: "%.0d", currentValue)
         sliderNumberView.text = valueString
     }
 
