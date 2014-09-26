@@ -18,16 +18,20 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var feedbackText: UILabel!
     
+    @IBOutlet weak var playAgainButton: UIButton!
+    
+    var targetValue: Int = Int(arc4random_uniform(10))
+    var currentValue: Int = 5
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sliderNumberView.text = "5"
         gradientInit()
+        playAgainButton.enabled = false
         
     }
     
-    var targetValue: Int = Int(arc4random_uniform(11))
-    var currentValue: Int = 5
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,8 +53,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func numberSliderAction(sender: AnyObject) {
-        currentValue = Int(floor(numberSlider.value * 10))
-        var valueString = NSString(format: "%.0d", currentValue)
+        currentValue = Int(numberSlider.value * 10)
+        var valueString = NSString(format: "%d", currentValue)
         sliderNumberView.text = valueString
     }
 
@@ -63,8 +67,16 @@ class ViewController: UIViewController {
         }
         else {
             feedbackText.text = "You Win!"
+            playAgainButton.alpha = 1
+            playAgainButton.enabled = true
         }
     }
 
+    @IBAction func playAgainButtonAction(sender: AnyObject) {
+        targetValue = Int(arc4random_uniform(10))
+        feedbackText.text = "Make A Guess!"
+        playAgainButton.alpha = 0
+        playAgainButton.enabled = false
+    }
 }
 
