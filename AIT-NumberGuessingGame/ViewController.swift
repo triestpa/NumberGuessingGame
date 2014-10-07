@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playAgainButton: UIButton!
     
-    var targetValue: Int = 5//Int(arc4random_uniform(10))
+    var targetValue: Int = Int(arc4random_uniform(10))
     var currentValue: Int = 5
 
     
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             playAgainButton.enabled = true
             
             playAgainButton.alpha = 0.0
-            UIView.animateWithDuration(2, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: .CurveEaseIn, animations: {
+            UIView.animateWithDuration(2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: .CurveEaseIn, animations: {
                 self.backgroundView.backgroundColor = UIColor.blueColor()
                 self.playAgainButton.alpha = 1.0
                 self.playAgainButton.center = CGPoint(x: 10, y: 100)
