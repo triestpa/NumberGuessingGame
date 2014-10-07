@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     var targetValue: Int = Int(arc4random_uniform(10))
     var currentValue: Int = 5
+    var numGuesses = 0;
 
     
     override func viewDidLoad() {
@@ -60,6 +61,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func guessButtonAction(sender: AnyObject) {
+        numGuesses++
         if (currentValue < targetValue){
             feedbackText.text = "Go Higher"
         }
@@ -67,7 +69,19 @@ class ViewController: UIViewController {
             feedbackText.text = "Go Lower"
         }
         else {
-            feedbackText.text = "You Win!"
+            feedbackText.numberOfLines = 3
+            feedbackText.font = UIFont.systemFontOfSize(20.0);
+            feedbackText.text = "You Win! \n\n Number of Guesses: "  + "\(numGuesses)"
+
+            numGuesses = 0
+
+            
+            // This code works, but I removed it for the sake of a more singular design
+            /*
+            var alertView = UIAlertView(title: "Game Over", message: "\(numGuesses)", delegate: nil, cancelButtonTitle: "Ok")
+            alertView.show()
+            */
+            
             //playAgainButton.alpha = 1
             playAgainButton.enabled = true
             
@@ -83,7 +97,6 @@ class ViewController: UIViewController {
     @IBAction func playAgainButtonAction(sender: AnyObject) {
         targetValue = Int(arc4random_uniform(10))
         feedbackText.text = "Make A Guess!"
-        
         
         UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8,
             options: .CurveEaseOut
